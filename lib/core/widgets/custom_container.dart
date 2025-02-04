@@ -34,10 +34,10 @@ class WCustomContainer extends StatelessWidget {
           horizontal: horizontalPadding ?? PTheme.paddingX,
         ),
         decoration: BoxDecoration(
-          color: color ?? context.theme.primaryColor,
+          color: color ?? context.themes.primaryColor,
           shape: boxShape ?? BoxShape.rectangle,
           border: Border.all(
-            color: borderColor ?? context.theme.colorScheme.secondary,
+            color: borderColor ?? context.themes.colorScheme.secondary,
           ),
           borderRadius: boxShape == null
               ? BorderRadius.circular(

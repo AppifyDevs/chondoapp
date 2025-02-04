@@ -5,11 +5,11 @@ class Languages extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': {
           'languageSelection': 'Select Language',
-          'hello': 'Hello',
+          'languageSelectionDescription': 'You can change selected language later from your menu tab.',
         },
         'bn_BD': {
           'languageSelection': 'ভাষা নির্বাচন করুন',
-          'hello': 'OHE',
+          'languageSelectionDescription': 'আপনি আপনার মেনু থেকে নির্বাচিত ভাষা পরে পরিবর্তন করতে পারেন',
         },
       };
 }
@@ -22,5 +22,5 @@ class MTranslate {
 
   // Static instances for auto-completion
   static final languageSelection = MTranslate('languageSelection');
-  static final hello = MTranslate('hello');
+  static final languageSelectionDescription = MTranslate('languageSelectionDescription');
 }

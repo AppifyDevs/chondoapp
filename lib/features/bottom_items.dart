@@ -15,17 +15,17 @@ List<NavigationBarItem> rootBodyitems = [
   NavigationBarItem(
     icon: Assets.logo.a404Error,
     unselectedIcon: Assets.logo.emptyData,
-    selectedColor: NavigationService.currentContext.theme.buttonTheme.colorScheme?.primary,
+    selectedColor: NavigationService.currentContext.themes.buttonTheme.colorScheme?.primary,
   ),
   NavigationBarItem(
     icon: Assets.logo.a404Error,
     unselectedIcon: Assets.logo.emptyData,
-    selectedColor: NavigationService.currentContext.theme.buttonTheme.colorScheme?.primary,
+    selectedColor: NavigationService.currentContext.themes.buttonTheme.colorScheme?.primary,
   ),
 
   NavigationBarItem(
     icon: Assets.logo.a404Error,
     unselectedIcon: Assets.logo.emptyData,
-    selectedColor: NavigationService.currentContext.theme.buttonTheme.colorScheme?.primary,
+    selectedColor: NavigationService.currentContext.themes.buttonTheme.colorScheme?.primary,
   ),
 ];

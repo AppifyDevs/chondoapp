@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 
 class WDivider extends StatelessWidget {
   final Color? color;
-  const WDivider({super.key, this.color});
+  final double? height, width;
+  const WDivider({
+    super.key,
+    this.color,
+    this.width,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color ?? context.theme.textTheme.bodyLarge?.color,
-      height: 1,
+      color: color ?? context.themes.dividerColor,
+      height: height ?? 1,
+      width: width ?? double.infinity,
     );
   }
 }

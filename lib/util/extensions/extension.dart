@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:chondohealth/util/constants/dimension_theme.dart';
 
 extension ThemeExtension on BuildContext {
-  ThemeData get theme {
+  ThemeData get themes {
     return Theme.of(this);
   }
 }

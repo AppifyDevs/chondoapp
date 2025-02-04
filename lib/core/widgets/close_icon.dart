@@ -10,7 +10,7 @@ class WCloseIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return WCustomContainer(
       onTap: () => Navigator.pop(context),
-      color: context.theme.cardColor.withOpacity(0.1),
+      color: context.themes.cardColor.withOpacity(0.1),
       verticalPadding: 6.h,
       horizontalPadding: 6.w,
       child: const Icon(Icons.close),

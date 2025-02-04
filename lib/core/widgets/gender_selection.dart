@@ -32,8 +32,8 @@ class GenderField extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(vertical: 4.h),
           decoration: BoxDecoration(
-            color: context.theme.inputDecorationTheme.fillColor,
-            border: Border.all(color: context.theme.inputDecorationTheme.border!.borderSide.color),
+            color: context.themes.inputDecorationTheme.fillColor,
+            border: Border.all(color: context.themes.inputDecorationTheme.border!.borderSide.color),
             borderRadius: BorderRadius.circular(
               PTheme.boarderRadius,
             ),
@@ -65,7 +65,7 @@ class GenderField extends StatelessWidget {
         if (errorText != null)
           Text(
             errorText,
-            style: context.theme.textTheme.displaySmall,
+            style: context.themes.textTheme.displaySmall,
           ),
       ],
     );

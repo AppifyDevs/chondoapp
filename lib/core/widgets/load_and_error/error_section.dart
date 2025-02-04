@@ -29,7 +29,7 @@ class WError extends StatelessWidget {
           Text(
             message,
             textAlign: TextAlign.center,
-            style: context.theme.textTheme.displaySmall,
+            style: context.themes.textTheme.displaySmall,
           ),
           if (onRetry != null) ...[
             gapY(10),

@@ -1,4 +1,5 @@
 import 'package:chondohealth/core/functions/unfocus.dart';
+import 'package:chondohealth/gen/assets.gen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chondohealth/util/constants/dimension_theme.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
@@ -15,6 +16,7 @@ class WSecondaryButton extends StatelessWidget {
   final bool isIconWith;
   final String? iconPath;
   final bool isSVGIcon;
+  final bool isArrowRight;
 
   const WSecondaryButton({
     super.key,
@@ -27,6 +29,7 @@ class WSecondaryButton extends StatelessWidget {
     this.isIconWith = false,
     this.isSVGIcon = true,
     this.iconPath,
+    this.isArrowRight = true,
   });
 
   @override
@@ -41,27 +44,40 @@ class WSecondaryButton extends StatelessWidget {
         width: width,
         child: Center(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisSize: MainAxisSize.min,
             children: [
-              isIconWith == false
+              Row(
+                children: [
+                  isIconWith == false
+                      ? const SizedBox.shrink()
+                      : Padding(
+                          padding: EdgeInsets.only(right: 8.w),
+                          child: isSVGIcon == false
+                              ? Image.asset(
+                                  iconPath ?? "",
+                                  height: 20.h,
+                                )
+                              : SvgPicture.asset(
+                                  iconPath ?? "",
+                                  height: 20.h,
+                                ),
+                        ),
+                  Text(
+                    text,
+                    style: context.themes.textTheme.bodySmall,
+                  ),
+                ],
+              ),
+              isArrowRight == false
                   ? const SizedBox.shrink()
                   : Padding(
                       padding: EdgeInsets.only(right: 8.w),
-                      child: isSVGIcon == false
-                          ? Image.asset(
-                              iconPath ?? "",
-                              height: 20.h,
-                            )
-                          : SvgPicture.asset(
-                              iconPath ?? "",
-                              height: 20.h,
-                            ),
+                      child: SvgPicture.asset(
+                        Assets.logo.arrowRight,
+                        height: 20.h,
+                      ),
                     ),
-              Text(
-                text,
-                style: context.theme.textTheme.displayMedium,
-              ),
             ],
           ),
         ),

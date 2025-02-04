@@ -17,7 +17,9 @@ class CTheme extends GetxController {
   }
 
   late final ThemeData _lightTheme = ThemeData(
+    fontFamily: 'Salsa',
     scaffoldBackgroundColor: PColors.backGroundColor,
+    dividerColor: Color(0xFFF6EBEB),
     brightness: Brightness.light,
     useMaterial3: true,
     appBarTheme: const AppBarTheme(backgroundColor: PColors.appBarColor),
@@ -33,6 +35,11 @@ class CTheme extends GetxController {
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: PColors.border, // Used this as border color for light theme
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: ButtonStyle(
+          side: WidgetStateProperty.all(
+              BorderSide(color: PColors.primaryTextColor.withOpacity(0.1), width: 1.0, style: BorderStyle.solid))),
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
@@ -76,6 +83,20 @@ class CTheme extends GetxController {
       hintStyle: TextStyle(
         color: const Color(0xFFA0A0A0),
         fontSize: 15.sp,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+    textTheme: TextTheme(
+      bodyLarge: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyMedium: TextStyle(
+        color: Colors.black.withOpacity(0.6),
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: TextStyle(
+        color: Color(0xFF22215B),
         fontWeight: FontWeight.w400,
       ),
     ),

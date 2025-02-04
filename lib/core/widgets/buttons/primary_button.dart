@@ -76,7 +76,7 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
           borderRadius: BorderRadius.circular(PTheme.boarderRadius),
           border: widget.border
               ? Border.all(
-                  color: widget.color ?? context.theme.buttonTheme.colorScheme!.primary,
+                  color: widget.color ?? context.themes.buttonTheme.colorScheme!.primary,
                 )
               : null,
           gradient: widget.border
@@ -87,11 +87,11 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
                   colors: widget.gradientColors ??
                       [
                         _isPressed
-                            ? context.theme.buttonTheme.colorScheme!.primary
-                            : context.theme.buttonTheme.colorScheme!.secondary,
+                            ? context.themes.buttonTheme.colorScheme!.primary
+                            : context.themes.buttonTheme.colorScheme!.secondary,
                         _isPressed
-                            ? context.theme.buttonTheme.colorScheme!.secondary
-                            : context.theme.buttonTheme.colorScheme!.primary,
+                            ? context.themes.buttonTheme.colorScheme!.secondary
+                            : context.themes.buttonTheme.colorScheme!.primary,
                       ],
                 ),
         ),
@@ -100,8 +100,8 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
             widget.text ?? "Primary Button",
             style: TextStyle(
               color: widget.border
-                  ? (widget.color ?? context.theme.buttonTheme.colorScheme!.primary)
-                  : context.theme.buttonTheme.colorScheme!.tertiary,
+                  ? (widget.color ?? context.themes.buttonTheme.colorScheme!.primary)
+                  : context.themes.buttonTheme.colorScheme!.tertiary,
               fontWeight: FontWeight.bold,
             ),
           ),

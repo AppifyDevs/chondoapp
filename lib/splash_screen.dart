@@ -22,7 +22,7 @@ class _SSplashState extends State<SSplash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.theme.buttonTheme.colorScheme?.secondary,
+      backgroundColor: context.themes.buttonTheme.colorScheme?.secondary,
       body: Center(
         child: SvgPicture.asset(Assets.logo.splash),
       ),
