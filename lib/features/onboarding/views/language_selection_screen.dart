@@ -1,8 +1,12 @@
 import 'package:chondohealth/core/widgets/buttons/secondary_button.dart';
 import 'package:chondohealth/core/widgets/divider.dart';
-import 'package:chondohealth/features/language/model/language_model.dart';
+import 'package:chondohealth/features/onboarding/models/language_model.dart';
+import 'package:chondohealth/features/onboarding/views/on_boarding_screen.dart';
 import 'package:chondohealth/gen/assets.gen.dart';
+import 'package:chondohealth/util/constants/keys.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
+import 'package:chondohealth/util/services/navigation_service.dart';
+import 'package:chondohealth/util/services/shared_preference_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -52,7 +56,19 @@ class SLanguageSelection extends StatelessWidget {
                     isSVGIcon: true,
                     iconPath: Assets.logo.bangla,
                     text: "Bangla",
-                    onTap: () => Get.updateLocale(const Locale('bn', 'BD')),
+                    onTap: () async {
+                      Get.updateLocale(const Locale('bn', 'BD'));
+                      try {
+                        SharedPrefService.instance.getBool(PKeys.isBoardingShown).then((bool value) {
+                          if (value == true) {
+                          } else {
+                            SOnBoarding().push();
+                          }
+                        });
+                      } catch (e) {
+                        await SOnBoarding().push();
+                      }
+                    },
                   ),
                   gapY(15),
                   WSecondaryButton(
@@ -60,7 +76,10 @@ class SLanguageSelection extends StatelessWidget {
                     isSVGIcon: true,
                     iconPath: Assets.logo.en,
                     text: "English",
-                    onTap: () => Get.updateLocale(const Locale('en', 'US')),
+                    onTap: () async {
+                      Get.updateLocale(const Locale('en', 'US'));
+                      await SOnBoarding().push();
+                    },
                   ),
                 ],
               ).paddingXY,

@@ -1,5 +1,6 @@
 import 'package:chondohealth/core/functions/unfocus.dart';
 import 'package:chondohealth/gen/assets.gen.dart';
+import 'package:chondohealth/util/constants/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chondohealth/util/constants/dimension_theme.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
@@ -35,6 +36,10 @@ class WSecondaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
+      style: ButtonStyle(
+          side: WidgetStatePropertyAll(BorderSide(
+        color: borderColor ?? PColors.border,
+      ))),
       onPressed: () {
         unFocus();
         onTap?.call();

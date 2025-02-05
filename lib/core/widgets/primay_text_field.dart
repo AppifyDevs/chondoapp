@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 
 class WTextField extends StatefulWidget {
   final double? width;
@@ -21,6 +22,7 @@ class WTextField extends StatefulWidget {
   final Widget? suffixWidget;
   final bool obsecureText;
   final String? prefixIconPath;
+  final bool? isprefixIconPathSvg;
   final Widget? suffixIcon;
   final FocusNode? focusNode;
   final Function()? onTap;
@@ -43,6 +45,7 @@ class WTextField extends StatefulWidget {
       this.suffixWidget,
       this.validator,
       this.prefixIconPath,
+      this.isprefixIconPathSvg = false,
       this.suffixIcon,
       this.onTap,
       this.onChanged,
@@ -67,6 +70,7 @@ class WTextField extends StatefulWidget {
     this.suffixWidget,
     this.validator,
     this.prefixIconPath,
+    this.isprefixIconPathSvg,
     this.suffixIcon,
     this.onTap,
     this.onChanged,
@@ -141,12 +145,15 @@ class _WTextFieldState extends State<WTextField> {
                       ? null
                       : Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Image.asset(
-                            widget.prefixIconPath!,
+                          child: SizedBox(
                             height: 15.w,
                             width: 15.w,
-                          ),
-                        ),
+                            child: widget.isprefixIconPathSvg == true
+                                ? SvgPicture.asset(widget.prefixIconPath!)
+                                : Image.asset(
+                                    widget.prefixIconPath!,
+                                  ),
+                          )),
                   suffixIcon: widget.obsecureText
                       ? InkWell(
                           onTap: () {

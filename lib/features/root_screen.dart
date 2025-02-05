@@ -5,7 +5,7 @@ import 'package:chondohealth/core/widgets/buttons/primary_button.dart';
 import 'package:chondohealth/core/widgets/confirm_dialog.dart';
 import 'package:chondohealth/core/widgets/primay_text_field.dart';
 import 'package:chondohealth/features/bottom_items.dart';
-import 'package:chondohealth/features/language/model/language_model.dart';
+import 'package:chondohealth/features/onboarding/models/language_model.dart';
 import 'package:flutter/material.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
 import 'package:flutter/services.dart';

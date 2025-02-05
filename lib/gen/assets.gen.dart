@@ -16,8 +16,21 @@ class $AssetsImagesGen {
   AssetGenImage get languageSelection =>
       const AssetGenImage('assets/images/language_selection.png');
 
+  /// File path: assets/images/on_boarding_1.png
+  AssetGenImage get onBoarding1 =>
+      const AssetGenImage('assets/images/on_boarding_1.png');
+
+  /// File path: assets/images/on_boarding_2.png
+  AssetGenImage get onBoarding2 =>
+      const AssetGenImage('assets/images/on_boarding_2.png');
+
+  /// File path: assets/images/on_boarding_3.png
+  AssetGenImage get onBoarding3 =>
+      const AssetGenImage('assets/images/on_boarding_3.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [languageSelection];
+  List<AssetGenImage> get values =>
+      [languageSelection, onBoarding1, onBoarding2, onBoarding3];
 }
 
 class $AssetsLogoGen {
