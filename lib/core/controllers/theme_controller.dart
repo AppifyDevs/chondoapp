@@ -19,16 +19,23 @@ class CTheme extends GetxController {
   late final ThemeData _lightTheme = ThemeData(
     fontFamily: 'Salsa',
     scaffoldBackgroundColor: PColors.backGroundColor,
-    dividerColor: Color(0xFFF6EBEB),
+    dividerColor: PColors.dividerColor,
     brightness: Brightness.light,
     useMaterial3: true,
-    appBarTheme: const AppBarTheme(backgroundColor: PColors.appBarColor),
+    appBarTheme: const AppBarTheme(backgroundColor: Colors.white, elevation: 0),
     primaryColor: PColors.white,
+    checkboxTheme: CheckboxThemeData(fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
+        return PColors.primaryButtonColor;
+      }
+      return Colors.transparent;
+    })),
     buttonTheme: ButtonThemeData(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xFFFF508C),
-        secondary: const Color(0xFFFF508C),
-        tertiary: Colors.white,
+        seedColor: PColors.primaryButtonColor.withOpacity(0.8),
+        secondary: PColors.primaryButtonColor,
+        primary: PColors.primaryButtonColor,
+        tertiary: PColors.primaryButtonColor.withOpacity(0.8),
         shadow: Colors.grey.withOpacity(0.1),
       ),
       highlightColor: Colors.white,
@@ -38,27 +45,33 @@ class CTheme extends GetxController {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
-          side: WidgetStateProperty.all(
-              BorderSide(color: PColors.primaryTextColor.withOpacity(0.1), width: 1.0, style: BorderStyle.solid))),
+        side: WidgetStateProperty.all(
+          BorderSide(
+            color: PColors.border,
+            width: 1.0,
+            style: BorderStyle.solid,
+          ),
+        ),
+      ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(PTheme.boarderRadius),
         ),
-        borderSide: BorderSide(color: const Color(0xFF8391A1).withOpacity(0.1), width: 0.5),
+        borderSide: BorderSide(color: PColors.border, width: 1),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(PTheme.boarderRadius),
         ),
-        borderSide: BorderSide(color: const Color(0xFF8391A1).withOpacity(0.1), width: 0.5),
+        borderSide: BorderSide(color: PColors.border, width: 1),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(PTheme.boarderRadius),
         ),
-        borderSide: BorderSide(color: const Color(0xFF8391A1).withOpacity(0.1), width: 0.5),
+        borderSide: BorderSide(color: PColors.border, width: 1),
       ),
       fillColor: Colors.white,
       filled: true,
@@ -66,39 +79,53 @@ class CTheme extends GetxController {
         borderRadius: BorderRadius.all(
           Radius.circular(PTheme.boarderRadius),
         ),
-        borderSide: BorderSide(color: const Color(0xFF8391A1).withOpacity(0.1), width: 0.5),
+        borderSide: BorderSide(color: PColors.border, width: 1),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(PTheme.boarderRadius),
         ),
-        borderSide: BorderSide(color: const Color(0xFF8391A1).withOpacity(0.1), width: 0.5),
+        borderSide: BorderSide(color: PColors.border, width: 1),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(PTheme.boarderRadius),
         ),
-        borderSide: BorderSide(color: const Color(0xFF8391A1).withOpacity(0.1), width: 0.5),
+        borderSide: BorderSide(color: PColors.border, width: 1),
       ),
       hintStyle: TextStyle(
-        color: const Color(0xFFA0A0A0),
-        fontSize: 15.sp,
+        color: PColors.primaryTextColor,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w400,
       ),
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(
-        color: Colors.black,
+        color: PColors.primaryTextColor,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
       ),
       bodyMedium: TextStyle(
         color: Colors.black.withOpacity(0.6),
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
       ),
       bodySmall: TextStyle(
-        color: Color(0xFF22215B),
+        color: Color(0xFF007BFF),
         fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
       ),
+      displayLarge: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      displayMedium: TextStyle(
+        color: PColors.primaryButtonColor,
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      //
     ),
   );
 

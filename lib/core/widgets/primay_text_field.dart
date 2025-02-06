@@ -1,7 +1,10 @@
+import 'package:chondohealth/gen/assets.gen.dart';
+import 'package:chondohealth/util/constants/dimension_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 
 class WTextField extends StatefulWidget {
   final double? width;
@@ -21,33 +24,37 @@ class WTextField extends StatefulWidget {
   final Widget? suffixWidget;
   final bool obsecureText;
   final String? prefixIconPath;
+  final bool? isprefixIconPathSvg;
   final Widget? suffixIcon;
   final FocusNode? focusNode;
   final Function()? onTap;
   final Function(String)? onChanged;
-  const WTextField(
-      {super.key,
-      this.width,
-      this.label,
-      this.labelStyle,
-      this.hintText,
-      this.maxLength,
-      this.minLength,
-      this.maxLines,
-      this.keyboardType,
-      required this.controller,
-      this.formatter,
-      this.readOnly = false,
-      this.onFieldSubmitted,
-      this.enabled = true,
-      this.suffixWidget,
-      this.validator,
-      this.prefixIconPath,
-      this.suffixIcon,
-      this.onTap,
-      this.onChanged,
-      this.focusNode})
-      : obsecureText = false;
+  final bool isBdPhoneNumber;
+  const WTextField({
+    super.key,
+    this.width,
+    this.label,
+    this.labelStyle,
+    this.hintText,
+    this.maxLength,
+    this.minLength,
+    this.maxLines,
+    this.keyboardType,
+    required this.controller,
+    this.formatter,
+    this.readOnly = false,
+    this.onFieldSubmitted,
+    this.enabled = true,
+    this.suffixWidget,
+    this.validator,
+    this.prefixIconPath,
+    this.isprefixIconPathSvg = false,
+    this.suffixIcon,
+    this.onTap,
+    this.onChanged,
+    this.focusNode,
+    this.isBdPhoneNumber = false,
+  }) : obsecureText = false;
 
   const WTextField.obsecureText({
     super.key,
@@ -67,10 +74,12 @@ class WTextField extends StatefulWidget {
     this.suffixWidget,
     this.validator,
     this.prefixIconPath,
+    this.isprefixIconPathSvg,
     this.suffixIcon,
     this.onTap,
     this.onChanged,
     this.focusNode,
+    this.isBdPhoneNumber = false,
   }) : obsecureText = true;
 
   @override
@@ -108,7 +117,11 @@ class _WTextFieldState extends State<WTextField> {
         if (widget.label != null)
           Text(
             widget.label!,
-            style: widget.labelStyle,
+            style: widget.labelStyle ??
+                context.themes.textTheme.bodyLarge?.copyWith(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         gapY(5),
         ValueListenableBuilder<bool>(
@@ -137,22 +150,56 @@ class _WTextFieldState extends State<WTextField> {
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 12.h, horizontal: widget.prefixIconPath == null ? 10.w : 0.0),
                   hintText: widget.hintText ?? (widget.label == null ? "Hint Text" : "Enter ${widget.label}"),
-                  prefixIcon: widget.prefixIconPath == null
-                      ? null
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Image.asset(
-                            widget.prefixIconPath!,
-                            height: 15.w,
-                            width: 15.w,
+                  prefixIcon: widget.isBdPhoneNumber == true
+                      ? Padding(
+                          padding: EdgeInsets.only(left: 20.w),
+                          child: Wrap(
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                Assets.logo.bangladesh,
+                                height: 24.h,
+                                fit: BoxFit.cover,
+                              ).gapX,
+                              Text(
+                                "+880",
+                                style: context.themes.textTheme.bodyLarge,
+                              ).gapX,
+                              Container(
+                                height: 20.h,
+                                width: 1.w,
+                                color: context.themes.textTheme.bodyLarge?.color,
+                              ).gapX,
+                            ],
                           ),
-                        ),
+                        )
+                      : widget.prefixIconPath == null
+                          ? null
+                          : Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w),
+                              child: widget.isprefixIconPathSvg == true
+                                  ? SvgPicture.asset(
+                                      widget.prefixIconPath!,
+                                    )
+                                  : Image.asset(
+                                      widget.prefixIconPath!,
+                                    ),
+                            ),
                   suffixIcon: widget.obsecureText
                       ? InkWell(
                           onTap: () {
                             obsecureText.value = !obsecureText.value;
                           },
-                          child: Icon(obsecureText.value ? Icons.visibility_off : Icons.visibility),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: PTheme.spaceX,
+                              vertical: PTheme.spaceY,
+                            ),
+                            child: SvgPicture.asset(
+                              obsecureText.value ? Assets.logo.eyeClose : Assets.logo.eyeOpen,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                         )
                       : widget.suffixIcon,
                 ),
@@ -160,7 +207,6 @@ class _WTextFieldState extends State<WTextField> {
             );
           },
         ),
-        gapX(10),
       ],
     );
   }

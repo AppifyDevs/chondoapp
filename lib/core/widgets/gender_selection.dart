@@ -27,7 +27,13 @@ class GenderField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Gender"),
+        Text(
+          "Gender",
+          style: context.themes.textTheme.bodyLarge?.copyWith(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         gapY(5),
         Container(
           padding: EdgeInsets.symmetric(vertical: 4.h),

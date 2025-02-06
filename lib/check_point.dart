@@ -1,4 +1,4 @@
-import 'package:chondohealth/features/language/model/language_model.dart';
+import 'package:chondohealth/features/onboarding/models/language_model.dart';
 import 'package:flutter/material.dart';
 import 'package:chondohealth/core/controllers/theme_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

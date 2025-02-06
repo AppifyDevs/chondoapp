@@ -73,7 +73,7 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
         height: widget.height ?? PTheme.fieldHeight,
         width: ScreenUtil().screenWidth,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(PTheme.boarderRadius),
+          borderRadius: BorderRadius.circular(30.r),
           border: widget.border
               ? Border.all(
                   color: widget.color ?? context.themes.buttonTheme.colorScheme!.primary,
@@ -88,9 +88,9 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
                       [
                         _isPressed
                             ? context.themes.buttonTheme.colorScheme!.primary
-                            : context.themes.buttonTheme.colorScheme!.secondary,
+                            : context.themes.buttonTheme.colorScheme!.tertiary,
                         _isPressed
-                            ? context.themes.buttonTheme.colorScheme!.secondary
+                            ? context.themes.buttonTheme.colorScheme!.tertiary
                             : context.themes.buttonTheme.colorScheme!.primary,
                       ],
                 ),
@@ -98,11 +98,8 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
         child: Center(
           child: Text(
             widget.text ?? "Primary Button",
-            style: TextStyle(
-              color: widget.border
-                  ? (widget.color ?? context.themes.buttonTheme.colorScheme!.primary)
-                  : context.themes.buttonTheme.colorScheme!.tertiary,
-              fontWeight: FontWeight.bold,
+            style: context.themes.textTheme.displayLarge?.copyWith(
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
