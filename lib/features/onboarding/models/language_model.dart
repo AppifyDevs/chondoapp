@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 
 class Languages extends Translations {
@@ -14,10 +16,23 @@ class Languages extends Translations {
           'onBoarding3Title': 'Know Your Body Better Than Ever!',
           'onBoarding3Description':
               'Embrace the ebb and flow of your cycle, and let every period inspire your greatness.',
+          // Sign IN Start From Screen's Texts//
           "log_in_to_your_account": "Log in to your account",
           "enterYourValidEmail": "Enter your valid email and password for login on CHONDO.",
           "email": "Email Address",
           "password": "Password",
+          "rememberMe": "Remember me",
+          "forgotPassword": "Forgot password",
+          "signIn": "Sign In",
+          "logInWith": "Log In with Google or Facebook${Platform.isIOS ? " or Apple" : ""}",
+          "signUpWith": "Sign Up with Google or Facebook${Platform.isIOS ? " or Apple" : ""}",
+          "dontHaveAnAccount": "Don’t have an account?",
+          "alreadyHaveAnAaccount": "Already have an account?",
+          "signUp": "Sign Up",
+          "dontWorryMessageForgotPassword": "Don’t worry it happens. Enter your email account to reset your password.",
+          "sendResetLink": "Send Reset Link",
+          "createAccount": "Create account",
+          "signUpWithOneOfTheFollowingOptions": "Sign up with one of the following options.",
         },
         'bn_BD': {
           'languageSelection': 'ভাষা নির্বাচন করুন',
@@ -45,4 +60,16 @@ class MTranslate {
   static final enterYourValidEmail = MTranslate('enterYourValidEmail');
   static final email = MTranslate('email');
   static final password = MTranslate('password');
+  static final rememberMe = MTranslate("rememberMe");
+  static final forgotPassword = MTranslate("forgotPassword");
+  static final signIn = MTranslate("signIn");
+  static final logInWith = MTranslate("logInWith");
+  static final signUpWith = MTranslate("signUpWith");
+  static final dontHaveAnAccount = MTranslate("dontHaveAnAccount");
+  static final alreadyHaveAnAaccount = MTranslate("alreadyHaveAnAaccount");
+  static final signUp = MTranslate("signUp");
+  static final dontWorryMessageForgotPassword = MTranslate("dontWorryMessageForgotPassword");
+  static final sendResetLink = MTranslate("sendResetLink");
+  static final createAccount = MTranslate("createAccount");
+  static final signUpWithOneOfTheFollowingOptions = MTranslate("signUpWithOneOfTheFollowingOptions");
 }

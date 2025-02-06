@@ -9,12 +9,38 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAvatarGen {
+  const $AssetsAvatarGen();
+
+  /// File path: assets/avatar/avatar1.png
+  AssetGenImage get avatar1 => const AssetGenImage('assets/avatar/avatar1.png');
+
+  /// File path: assets/avatar/avatar2.png
+  AssetGenImage get avatar2 => const AssetGenImage('assets/avatar/avatar2.png');
+
+  /// File path: assets/avatar/avatar3.png
+  AssetGenImage get avatar3 => const AssetGenImage('assets/avatar/avatar3.png');
+
+  /// File path: assets/avatar/avatar4.png
+  AssetGenImage get avatar4 => const AssetGenImage('assets/avatar/avatar4.png');
+
+  /// File path: assets/avatar/avatar5.png
+  AssetGenImage get avatar5 => const AssetGenImage('assets/avatar/avatar5.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [avatar1, avatar2, avatar3, avatar4, avatar5];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// File path: assets/images/language_selection.png
   AssetGenImage get languageSelection =>
       const AssetGenImage('assets/images/language_selection.png');
+
+  /// File path: assets/images/loading.gif
+  AssetGenImage get loading => const AssetGenImage('assets/images/loading.gif');
 
   /// File path: assets/images/on_boarding_1.png
   AssetGenImage get onBoarding1 =>
@@ -30,7 +56,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [languageSelection, onBoarding1, onBoarding2, onBoarding3];
+      [languageSelection, loading, onBoarding1, onBoarding2, onBoarding3];
 }
 
 class $AssetsLogoGen {
@@ -39,11 +65,20 @@ class $AssetsLogoGen {
   /// File path: assets/logo/404_error.svg
   String get a404Error => 'assets/logo/404_error.svg';
 
+  /// File path: assets/logo/apple.svg
+  String get apple => 'assets/logo/apple.svg';
+
   /// File path: assets/logo/arrow_right.svg
   String get arrowRight => 'assets/logo/arrow_right.svg';
 
   /// File path: assets/logo/bangla.svg
   String get bangla => 'assets/logo/bangla.svg';
+
+  /// File path: assets/logo/bangladesh.svg
+  String get bangladesh => 'assets/logo/bangladesh.svg';
+
+  /// File path: assets/logo/calendar.svg
+  String get calendar => 'assets/logo/calendar.svg';
 
   /// File path: assets/logo/empty_data.svg
   String get emptyData => 'assets/logo/empty_data.svg';
@@ -56,6 +91,12 @@ class $AssetsLogoGen {
 
   /// File path: assets/logo/eye-open.svg
   String get eyeOpen => 'assets/logo/eye-open.svg';
+
+  /// File path: assets/logo/facebook.svg
+  String get facebook => 'assets/logo/facebook.svg';
+
+  /// File path: assets/logo/google.svg
+  String get google => 'assets/logo/google.svg';
 
   /// File path: assets/logo/lock.svg
   String get lock => 'assets/logo/lock.svg';
@@ -75,12 +116,17 @@ class $AssetsLogoGen {
   /// List of all assets
   List<String> get values => [
         a404Error,
+        apple,
         arrowRight,
         bangla,
+        bangladesh,
+        calendar,
         emptyData,
         en,
         eyeClose,
         eyeOpen,
+        facebook,
+        google,
         lock,
         logout,
         message,
@@ -92,6 +138,7 @@ class $AssetsLogoGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAvatarGen avatar = $AssetsAvatarGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogoGen logo = $AssetsLogoGen();
 }

@@ -7,7 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WDot extends StatelessWidget {
   final int length;
   final int selectedIndex;
-  const WDot({super.key, this.length = 0, this.selectedIndex = 0});
+  final double? width;
+  const WDot({super.key, this.length = 0, this.selectedIndex = 0, this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class WDot extends StatelessWidget {
           return Container(
             margin: EdgeInsets.symmetric(horizontal: PTheme.spaceX),
             height: 3.h,
-            width: 25.w,
+            width: width ?? 25.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.r),
               color: selectedIndex == index

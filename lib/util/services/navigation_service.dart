@@ -6,47 +6,67 @@ class NavigationService {
 }
 
 extension Navigation on Widget {
-  // Function to push a new screen onto the navigator stack.
+  // Function to push a new screen with a Slide transition.
   Future push({
-    BuildContext? context, // Optional context for navigation
+    BuildContext? context,
   }) async {
     return await Navigator.push(
-      context ?? NavigationService.key.currentContext!, // Use Global if context is not provided
-      MaterialPageRoute(
-        builder: (context) => this, // Build the screen
+      context ?? NavigationService.key.currentContext!,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => this,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(1.0, 0.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
       ),
     );
   }
 
-// Function to completely replace the current screen with a new one.
   Future pushReplacement({
-    BuildContext? context, // Optional context for navigation
+    BuildContext? context,
   }) {
     return Navigator.pushReplacement(
-      context ?? NavigationService.key.currentContext!, // Use Global if context is not provided
-      MaterialPageRoute(
-        builder: (context) => this, // Build the replacement screen
+      context ?? NavigationService.key.currentContext!,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => this,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return ScaleTransition(
+            scale: animation,
+            child: child,
+          );
+        },
       ),
     );
   }
 
-// Function to push a new screen and remove all previous screens from the stack.
   Future pushAndRemoveUntil({
-    BuildContext? context, // Optional context for navigation
+    BuildContext? context,
   }) {
     return Navigator.pushAndRemoveUntil(
-        context ?? NavigationService.key.currentContext!, // Use Global if context is not provided
-        MaterialPageRoute(
-          builder: (context) => this, // Build the screen
-        ),
-        (route) => false); // Remove all previous screens
+      context ?? NavigationService.key.currentContext!,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => this,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          // Define a scale transition
+          return ScaleTransition(
+            scale: animation,
+            child: child,
+          );
+        },
+      ),
+      (route) => false,
+    );
   }
 
-// Function to pop the current screen from the navigator stack.
-  static void pop(
-      {BuildContext? context, // Optional context for navigation
-      String? msg}) {
+  static void pop({BuildContext? context, String? msg}) {
     return Navigator.pop(
-        context ?? NavigationService.key.currentContext!, msg); // Use Global if context is not provided
+      context ?? NavigationService.key.currentContext!,
+      msg,
+    );
   }
 }

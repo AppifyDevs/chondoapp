@@ -70,7 +70,7 @@ class WSecondaryButton extends StatelessWidget {
                         ),
                   Text(
                     text,
-                    style: context.themes.textTheme.bodySmall,
+                    style: context.themes.textTheme.bodyLarge,
                   ),
                 ],
               ),

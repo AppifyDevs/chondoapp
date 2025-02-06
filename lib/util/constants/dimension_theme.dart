@@ -11,5 +11,5 @@ class PTheme {
   static double imageDefaultY = 92.h;
   static double spaceLY = 20.h;
   static double fieldHeight = 46.h;
-  static double boarderRadius = 8.w;
+  static double boarderRadius = 10.w;
 }

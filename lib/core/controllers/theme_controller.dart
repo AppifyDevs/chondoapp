@@ -22,8 +22,14 @@ class CTheme extends GetxController {
     dividerColor: PColors.dividerColor,
     brightness: Brightness.light,
     useMaterial3: true,
-    appBarTheme: const AppBarTheme(backgroundColor: PColors.appBarColor),
+    appBarTheme: const AppBarTheme(backgroundColor: Colors.white, elevation: 0),
     primaryColor: PColors.white,
+    checkboxTheme: CheckboxThemeData(fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
+        return PColors.primaryButtonColor;
+      }
+      return Colors.transparent;
+    })),
     buttonTheme: ButtonThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: PColors.primaryButtonColor.withOpacity(0.8),
@@ -95,7 +101,7 @@ class CTheme extends GetxController {
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(
-        color: Color(0xFF22215B),
+        color: PColors.primaryTextColor,
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
       ),
@@ -105,7 +111,7 @@ class CTheme extends GetxController {
         fontWeight: FontWeight.w400,
       ),
       bodySmall: TextStyle(
-        color: Color(0xFF22215B),
+        color: Color(0xFF007BFF),
         fontWeight: FontWeight.w400,
         fontSize: 14.sp,
       ),
@@ -114,6 +120,12 @@ class CTheme extends GetxController {
         fontWeight: FontWeight.w400,
         fontSize: 14.sp,
       ),
+      displayMedium: TextStyle(
+        color: PColors.primaryButtonColor,
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+      ),
+      //
     ),
   );
 
