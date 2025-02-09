@@ -1,3 +1,4 @@
+import 'package:chondohealth/core/functions/snackbar.dart';
 import 'package:chondohealth/core/widgets/buttons/primary_button.dart';
 import 'package:chondohealth/core/widgets/date_picker_form_field.dart';
 import 'package:chondohealth/core/widgets/gender_selection.dart';
@@ -39,7 +40,7 @@ class _SCreateAccountState extends State<SCreateAccount> {
                         ? WDetailsCreateAccount(
                             dobTxtCtrl: _dobTxtCtrl,
                           )
-                        : const SPeriodLengthAccountCreation();
+                        : SPeriodLengthAccountCreation(isForPeriodLenght: value == 1 ? true : false);
                   },
                 ),
               ),
@@ -73,17 +74,20 @@ class _SCreateAccountState extends State<SCreateAccount> {
                   ),
                 ).gapLY,
                 ValueListenableBuilder(
-                    valueListenable: isSelectedBody,
-                    builder: (context, value, child) {
-                      return WPrimaryButton(
-                        text: value == 2 ? "Continue" : "Next",
-                        onTap: () {
-                          if (value < 2) {
-                            isSelectedBody.value++;
-                          }
-                        },
-                      );
-                    }),
+                  valueListenable: isSelectedBody,
+                  builder: (context, value, child) {
+                    return WPrimaryButton(
+                      text: value == 2 ? "Continue" : "Next",
+                      onTap: () {
+                        if (value < 2) {
+                          isSelectedBody.value++;
+                        } else {
+                          showSnackBar("Thanks for trying! Please go back to the sign in page");
+                        }
+                      },
+                    );
+                  },
+                ),
               ],
             ),
           ],

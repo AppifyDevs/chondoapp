@@ -32,8 +32,34 @@ class $AssetsAvatarGen {
       [avatar1, avatar2, avatar3, avatar4, avatar5];
 }
 
+class $AssetsBottomGen {
+  const $AssetsBottomGen();
+
+  /// File path: assets/bottom/calendar.svg
+  String get calendar => 'assets/bottom/calendar.svg';
+
+  /// File path: assets/bottom/contact.svg
+  String get contact => 'assets/bottom/contact.svg';
+
+  /// File path: assets/bottom/home.svg
+  String get home => 'assets/bottom/home.svg';
+
+  /// File path: assets/bottom/menu.svg
+  String get menu => 'assets/bottom/menu.svg';
+
+  /// File path: assets/bottom/videos.svg
+  String get videos => 'assets/bottom/videos.svg';
+
+  /// List of all assets
+  List<String> get values => [calendar, contact, home, menu, videos];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/card_home.png
+  AssetGenImage get cardHome =>
+      const AssetGenImage('assets/images/card_home.png');
 
   /// File path: assets/images/language_selection.png
   AssetGenImage get languageSelection =>
@@ -55,8 +81,14 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/on_boarding_3.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [languageSelection, loading, onBoarding1, onBoarding2, onBoarding3];
+  List<AssetGenImage> get values => [
+        cardHome,
+        languageSelection,
+        loading,
+        onBoarding1,
+        onBoarding2,
+        onBoarding3
+      ];
 }
 
 class $AssetsLogoGen {
@@ -79,6 +111,9 @@ class $AssetsLogoGen {
 
   /// File path: assets/logo/calendar.svg
   String get calendar => 'assets/logo/calendar.svg';
+
+  /// File path: assets/logo/edit.svg
+  String get edit => 'assets/logo/edit.svg';
 
   /// File path: assets/logo/empty_data.svg
   String get emptyData => 'assets/logo/empty_data.svg';
@@ -104,8 +139,14 @@ class $AssetsLogoGen {
   /// File path: assets/logo/logout.svg
   String get logout => 'assets/logo/logout.svg';
 
+  /// File path: assets/logo/menu.svg
+  String get menu => 'assets/logo/menu.svg';
+
   /// File path: assets/logo/message.svg
   String get message => 'assets/logo/message.svg';
+
+  /// File path: assets/logo/notification.svg
+  String get notification => 'assets/logo/notification.svg';
 
   /// File path: assets/logo/splash.svg
   String get splash => 'assets/logo/splash.svg';
@@ -121,6 +162,7 @@ class $AssetsLogoGen {
         bangla,
         bangladesh,
         calendar,
+        edit,
         emptyData,
         en,
         eyeClose,
@@ -129,7 +171,9 @@ class $AssetsLogoGen {
         google,
         lock,
         logout,
+        menu,
         message,
+        notification,
         splash,
         userProfile
       ];
@@ -139,6 +183,7 @@ class Assets {
   Assets._();
 
   static const $AssetsAvatarGen avatar = $AssetsAvatarGen();
+  static const $AssetsBottomGen bottom = $AssetsBottomGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogoGen logo = $AssetsLogoGen();
 }

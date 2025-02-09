@@ -8,7 +8,7 @@ extension ThemeExtension on BuildContext {
   }
 }
 
-extension PaddingExtension on Widget {
+extension Extension on Widget {
   Widget get paddingXY {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: PTheme.paddingX, vertical: PTheme.paddingY),

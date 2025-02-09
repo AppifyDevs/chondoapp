@@ -1,8 +1,9 @@
 import 'dart:io';
-
+import 'package:chondohealth/core/functions/snackbar.dart';
 import 'package:chondohealth/core/widgets/buttons/primary_button.dart';
 import 'package:chondohealth/core/widgets/custom_container.dart';
 import 'package:chondohealth/core/widgets/primay_text_field.dart';
+import 'package:chondohealth/features/auth/controller/auth_controller.dart';
 import 'package:chondohealth/features/auth/views/forgot_password_screen.dart';
 import 'package:chondohealth/features/auth/views/sign_up_screen.dart';
 import 'package:chondohealth/features/auth/widgets/bottom_text_span_widget.dart';
@@ -25,7 +26,10 @@ class SSignIn extends StatefulWidget {
 }
 
 class _SSignInState extends State<SSignIn> {
+  final CAuth cAuth = Get.put(CAuth());
   ValueNotifier<bool> isChecked = ValueNotifier<bool>(false);
+  final TextEditingController _emailTxtCtrl = TextEditingController();
+  final TextEditingController _passwordTxtCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +51,13 @@ class _SSignInState extends State<SSignIn> {
                       prefixIconPath: Assets.logo.message,
                       isprefixIconPathSvg: true,
                       hintText: MTranslate.email.tr,
-                      controller: TextEditingController(),
+                      controller: _emailTxtCtrl,
                     ).gapY,
                     WTextField.obsecureText(
                       prefixIconPath: Assets.logo.lock,
                       isprefixIconPathSvg: true,
                       hintText: MTranslate.password.tr,
-                      controller: TextEditingController(),
+                      controller: _passwordTxtCtrl,
                     ).gapY,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +97,16 @@ class _SSignInState extends State<SSignIn> {
                     ).gapLY.gapLY.gapY,
                     WPrimaryButton(
                       text: MTranslate.signIn.tr,
-                      onTap: () {},
+                      onTap: () {
+                        if ((_emailTxtCtrl.text.isEmpty) && (_passwordTxtCtrl.text.isEmpty)) {
+                          showSnackBar("Please input the fields");
+                        } else {
+                          cAuth.signIn(
+                            email: _emailTxtCtrl.text,
+                            password: _passwordTxtCtrl.text,
+                          );
+                        }
+                      },
                     ).gapLY.gapLY.gapLY,
                     Align(
                       alignment: Alignment.center,

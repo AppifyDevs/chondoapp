@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SPeriodLengthAccountCreation extends StatefulWidget {
-  const SPeriodLengthAccountCreation({super.key});
+  final bool isForPeriodLenght;
+  const SPeriodLengthAccountCreation({super.key, required this.isForPeriodLenght});
 
   @override
   State<SPeriodLengthAccountCreation> createState() => _SPeriodLengthAccountCreationState();
@@ -32,7 +33,7 @@ class _SPeriodLengthAccountCreationState extends State<SPeriodLengthAccountCreat
       children: [
         gapY(100),
         Text(
-          'What’s your Period Length?',
+          widget.isForPeriodLenght == true ? 'What’s your Period Length?' : "What’s your Cycle Length?",
           style: context.themes.textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.w400,
             fontSize: 20.sp,
@@ -97,7 +98,9 @@ class _SPeriodLengthAccountCreationState extends State<SPeriodLengthAccountCreat
           ),
         ).gapLY.gapLY,
         Text(
-          'Your Period cycle starts on the day you start bleeding and ends on the day your bleeding stops. Your period length can vary from about 2 to 7 days.',
+          widget.isForPeriodLenght == true
+              ? 'Your Period cycle starts on the day you start bleeding and ends on the day your bleeding stops. Your period length can vary from about 2 to 7 days.'
+              : "Your average cycle starts on the first day of your last period and ends on the first day of your next period. Your cycle length can vary from about 21 days to 35 days.",
           textAlign: TextAlign.center,
           style: context.themes.textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.w400,

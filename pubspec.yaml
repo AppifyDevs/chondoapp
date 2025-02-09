@@ -35,6 +35,7 @@ flutter:
     - assets/logo/
     - assets/images/
     - assets/avatar/
+    - assets/bottom/
   fonts:
     - family: Salsa
       fonts:
