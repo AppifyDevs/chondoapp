@@ -23,6 +23,7 @@ class WImageNetwork extends StatelessWidget {
                 onError: (exception, stackTrace) {
                   NetworkImage(errorImage ?? PDefaultValues.noImage);
                 },
+                fit: fit,
               ),
             ),
           )

@@ -7,12 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WPrimaryButton extends StatefulWidget {
   final String? text;
   final void Function()? onTap;
-  final double? height;
-  final double? width;
+  final double? height, width, radius;
   final bool border;
   final Color? color;
   final List<Color>? gradientColors;
   final bool? isDisabled;
+  final TextStyle? style;
   const WPrimaryButton({
     super.key,
     this.text,
@@ -22,7 +22,10 @@ class WPrimaryButton extends StatefulWidget {
     this.color,
     this.gradientColors,
     this.isDisabled,
+    this.style,
+    this.radius,
   }) : border = false;
+
   const WPrimaryButton.border({
     super.key,
     required this.text,
@@ -32,6 +35,8 @@ class WPrimaryButton extends StatefulWidget {
     this.color,
     this.gradientColors,
     this.isDisabled,
+    this.style,
+    this.radius,
   }) : border = true;
 
   @override
@@ -73,34 +78,38 @@ class WPrimaryButtonState extends State<WPrimaryButton> {
         height: widget.height ?? PTheme.fieldHeight,
         width: ScreenUtil().screenWidth,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.r),
+          borderRadius: BorderRadius.circular(widget.radius ?? 30.r),
+          color: widget.color,
           border: widget.border
               ? Border.all(
                   color: widget.color ?? context.themes.buttonTheme.colorScheme!.primary,
                 )
               : null,
-          gradient: widget.border
+          gradient: widget.color != null
               ? null
-              : LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: widget.gradientColors ??
-                      [
-                        _isPressed
-                            ? context.themes.buttonTheme.colorScheme!.primary
-                            : context.themes.buttonTheme.colorScheme!.tertiary,
-                        _isPressed
-                            ? context.themes.buttonTheme.colorScheme!.tertiary
-                            : context.themes.buttonTheme.colorScheme!.primary,
-                      ],
-                ),
+              : widget.border
+                  ? null
+                  : LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: widget.gradientColors ??
+                          [
+                            _isPressed
+                                ? context.themes.buttonTheme.colorScheme!.primary
+                                : context.themes.buttonTheme.colorScheme!.tertiary,
+                            _isPressed
+                                ? context.themes.buttonTheme.colorScheme!.tertiary
+                                : context.themes.buttonTheme.colorScheme!.primary,
+                          ],
+                    ),
         ),
         child: Center(
           child: Text(
             widget.text ?? "Primary Button",
-            style: context.themes.textTheme.displayLarge?.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
+            style: widget.style ??
+                context.themes.textTheme.displayLarge?.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         ),
       ),

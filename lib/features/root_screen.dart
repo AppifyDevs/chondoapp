@@ -1,15 +1,11 @@
 import 'dart:io';
 
 import 'package:chondohealth/core/widgets/bottom_navigation.dart';
-import 'package:chondohealth/core/widgets/buttons/primary_button.dart';
 import 'package:chondohealth/core/widgets/confirm_dialog.dart';
-import 'package:chondohealth/core/widgets/primay_text_field.dart';
 import 'package:chondohealth/features/bottom_items.dart';
-import 'package:chondohealth/features/onboarding/models/language_model.dart';
 import 'package:flutter/material.dart';
 import 'package:chondohealth/util/extensions/extension.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 class SRoot extends StatelessWidget {
   const SRoot({super.key});
@@ -50,19 +46,7 @@ class SRoot extends StatelessWidget {
         body: ValueListenableBuilder(
           valueListenable: currentIndex,
           builder: (context, value, child) {
-            return Column(
-              children: [
-                Center(
-                  child: Text(MTranslate.languageSelection.tr),
-                ),
-                WPrimaryButton(
-                  onTap: () {
-                    Get.updateLocale(const Locale('bn', 'BD'));
-                  },
-                ).gapY,
-                WTextField(controller: TextEditingController())
-              ],
-            ).paddingXY;
+            return rootBodyitems[value].child ?? SizedBox.shrink().paddingXY;
           },
         ),
       ),

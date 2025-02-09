@@ -29,7 +29,7 @@ class PDropDownField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        if (!isNull(label))
+        if (!isNullCheck(label))
           Text(
             label,
             style: labelStyle,

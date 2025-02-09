@@ -5,19 +5,18 @@ class NavigationBarItem {
   /// An icon to display.
   final String icon;
 
-  /// An icon to display.
-  final String? unselectedIcon;
-
   /// A primary color to use for this tab.
   final Color? selectedColor;
 
   /// The color to display when this tab is not selected.
   final Color? unselectedColor;
 
+  final Widget? child;
+
   NavigationBarItem({
     required this.icon,
-    this.unselectedIcon,
     this.selectedColor,
     this.unselectedColor,
+    this.child,
   });
 }

@@ -1,5 +1,5 @@
 class PKeys {
   static const usertoken = "userToken";
-  static const userRefreshtoken = "userRefreshToken";
+  static const userId = "userId";
   static const isBoardingShown = "isBoardingShown";
 }
